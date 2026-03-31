@@ -5,8 +5,7 @@ services:
     container_name: agent
     restart: unless-stopped
     environment:
-      CONSUL_ADVERTISE_ADDRESS:
-      CONSUL_ADVERTISE_INTERFACE: ${CONSUL_ADVERTISE_INTERFACE:-ens192}
+      CONSUL_ZEROCONFIG: "true"
     hostname: $HOSTNAME
     network_mode: host
     volumes:

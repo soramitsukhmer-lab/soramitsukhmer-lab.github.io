@@ -5,7 +5,7 @@ services:
     container_name: agent
     restart: unless-stopped
     environment:
-      CONSUL_ADVERTISE_ADDRESS: ${CONSUL_ADVERTISE_ADDRESS:?The CONSUL_ADVERTISE_ADDRESS environment variable must be set}
+      CONSUL_ZEROCONFIG: "true"
     hostname: ${HOSTNAME:?The HOSTNAME environment variable must be set}
     ports:
       - "8300:8300/tcp"
