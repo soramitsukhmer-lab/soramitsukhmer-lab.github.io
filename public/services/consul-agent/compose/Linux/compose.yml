@@ -1,0 +1,15 @@
+name: consul
+services:
+  agent:
+    image: ghcr.io/soramitsukhmer-lab/sorakhrun-consul-agent:latest
+    container_name: agent
+    restart: unless-stopped
+    environment:
+      CONSUL_ADVERTISE_ADDRESS:
+      CONSUL_ADVERTISE_INTERFACE: ${CONSUL_ADVERTISE_INTERFACE:-ens192}
+    hostname: $HOSTNAME
+    network_mode: host
+    volumes:
+      - data:/consul/data
+volumes:
+  data:
