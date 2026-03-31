@@ -11,4 +11,4 @@ fi
 export COMPOSE_PROJECT_NAME="consul"
 export CONSUL_ADVERTISE_ADDRESS; CONSUL_ADVERTISE_ADDRESS=$(curl -s http://myip.sorakh.run)
 
-(set -x; curl -s "$COMPOSE_FILE" | docker compose -f - up -d)
+(set -x; curl -s "$COMPOSE_FILE" | docker compose -f - up -d --pull always)
