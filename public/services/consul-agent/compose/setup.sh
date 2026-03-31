@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 set -e
-export COMPOSE_PROJECT_NAME="consul"
-COMPOSE_FILE="https://soramitsukhmer-lab.github.io/services/consul-agent/compose/$(uname)/compose.yml"
-COMPOSE_FILE_OVERRIDE=""
-if [[ "$(uname)" == "Darwin" ]]; then
+PLATFORM=$(uname)
+if [[ "${PLATFORM}" == "Darwin" ]]; then
 	export HOSTNAME; HOSTNAME=$(scutil --get LocalHostName)
 else
 	export HOSTNAME; HOSTNAME=$(hostname)
 fi
+export COMPOSE_PROJECT_NAME="consul"
+COMPOSE_FILE="https://soramitsukhmer-lab.github.io/services/consul-agent/compose/${PLATFORM}/compose.yml"
+COMPOSE_FILE_OVERRIDE=""
 if [ -f "compose.override.yml" ]; then
 	COMPOSE_FILE_OVERRIDE="compose.override.yml"
 elif [ -f "docker-compose.override.yml" ]; then
